@@ -1,17 +1,24 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
 import { devices } from "@playwright/test";
 
+const currentDateTime = new Date().toISOString();
+
 const config: PlaywrightTestConfig = {
   testDir: `./tests`,
-  outputDir: `./results/traces`,
+  outputDir: `./results/results-${currentDateTime}/traces`,
   timeout: 90000,
   expect: {
     timeout: 15000,
   },
-
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: "html",
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  reporter: [
+    ["list"],
+    [
+      "json",
+      {
+        outputFile: `./results/results-${currentDateTime}/test-results.json`,
+      },
+    ],
+  ],
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
