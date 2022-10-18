@@ -1,11 +1,3 @@
-// if (!process.env.RESULTS_OUTPUT_DIR) {
-//   const currentDateTime = new Date()
-//     .toISOString()
-//     .replace(/[:.]/g, "_") //Dot does not need to be escaped inside character class []
-//     .slice(0, -1);
-//   process.env.RESULTS_OUTPUT_DIR = `./results/results-${currentDateTime}`;
-// }
-
 process.env.RESULTS_OUTPUT_DIR = !process.env.RESULTS_OUTPUT_DIR
   ? `./results/results-${new Date()
       .toISOString()
