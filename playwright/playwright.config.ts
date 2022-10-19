@@ -1,5 +1,4 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
-//import { resultsOutputDir } from "./lib/env";
 import { testConfig } from "./lib/env";
 
 const config: PlaywrightTestConfig = {

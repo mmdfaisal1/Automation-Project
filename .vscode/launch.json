@@ -4,6 +4,8 @@
     {
       "type": "node",
       "request": "launch",
+      "program": "${workspaceFolder}/node_modules/playwright-core/cli.js",
+      "args": ["test", "${file}", "--headed"],
       "name": "Debug Playwright Tests",
       "skipFiles": ["<node_internals>/**"]
     }
