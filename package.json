@@ -12,7 +12,7 @@
     "npm": "Please use yarn"
   },
   "scripts": {
-    "test": "echo 'Please use command \"npx playwright-e2e\"' && exit 1",
+    "test": "echo 'Please use command \"yarn playwright-e2e\"' && exit 1",
     "playwright-e2e": "cd playwright && npx playwright test"
   },
   "license": "UNLICENSED"
