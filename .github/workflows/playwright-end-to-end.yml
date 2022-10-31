@@ -1,0 +1,40 @@
+name: Playwright E2E Tests (UI and API)
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: playwright-end-to-end-${{ github.head_ref }}
+  cancel-in-progress: true
+
+env:
+  GH_API_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+
+jobs:
+  playwright-tests:
+    name: PlayWright E2E Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+      - name: Set up Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: yarn playwright-e2e
+      - uses: actions/upload-artifact@v3.1.1
+        if: always()
+        with:
+          name: Playwright Reports and Traces
+          path: playwright/results/**/*
+          retention-days: 14
