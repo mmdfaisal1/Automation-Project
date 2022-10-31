@@ -16,7 +16,7 @@ env:
 
 jobs:
   playwright-tests:
-    name: PlayWright E2E Tests
+    name: Playwright E2E Tests
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
